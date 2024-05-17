@@ -11,9 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/remedios")
 public class RemedioControler {
+
+
     //@PostMapping é o verbo que minha funcao vai usar
     //@RequestBody indica que eu vou passar um atributo durante minha requisição
     @PostMapping
+
+
+    //Para passar informçoes como o remedeio por meio de requisição é preciso cria um DTO
+    //Onde vou informar os atributos que eu vou pedir.
+
+
     public void cadastrar(@RequestBody DadosCadastroRemedio dados){
         System.out.println(dados);
     }
