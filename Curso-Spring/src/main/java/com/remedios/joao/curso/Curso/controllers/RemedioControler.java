@@ -1,8 +1,8 @@
 package com.remedios.joao.curso.Curso.controllers;
 
-import com.remedios.joao.curso.Curso.remedio.DTO.DadosCadastroRemedio;
-import com.remedios.joao.curso.Curso.remedio.Remedio;
-import com.remedios.joao.curso.Curso.remedio.Repository.RemedioRepository;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.InDadosCadastroRemedio;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.Remedio;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.Repository.RemedioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +26,7 @@ public class RemedioControler {
     //Onde vou informar os atributos que eu vou pedir.
 
 
-    public void cadastrar(@RequestBody DadosCadastroRemedio dados){
+    public void cadastrar(@RequestBody InDadosCadastroRemedio dados){
         repository.save(new Remedio(dados));
     }
 
