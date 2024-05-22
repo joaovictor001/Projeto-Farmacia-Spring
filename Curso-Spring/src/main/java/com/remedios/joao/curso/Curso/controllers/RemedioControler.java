@@ -25,9 +25,9 @@ public class RemedioControler {
     //@RequestBody indica que eu vou passar um atributo durante minha requisição
     @PostMapping
 
-    //Para passar informçoes como o remedeio por meio de requisição é preciso cria um DTO(Model de dados).
+    //Para passar informaçoes como o remedeio por meio de requisição é preciso cria um DTO(Model de dados).
     //Onde vou informar os atributos que eu vou pedir.
-    //casso haja algo erro no post o Trasactional da um rollback nao enviando imformaçoes quebradas.
+    // @Transactional: caso haja algo erro no post o Trasactional da um rollback nao enviando imformaçoes quebradas.
     @Transactional
     public void cadastrar(@RequestBody @Valid InDadosCadastroRemedio dados){
         repository.save(new Remedio(dados));
@@ -38,12 +38,27 @@ public class RemedioControler {
         return repository.findAll().stream().map(OutDadosCadastroRemedio::new).toList();
     }
 
+    @GetMapping("/{id}")
+    public List<OutDadosCadastroRemedio> pegaum(@PathVariable long id){
+        return repository.findById(id).stream().map(OutDadosCadastroRemedio::new).toList();
+
+
+
+    }
+
     @PutMapping
     @Transactional
     public void atualizar(@RequestBody @Valid DadosAtualizarRemedio dados){
         var remedio = repository.getReferenceById(dados.id());
         remedio.atualizarInformacoes(dados);
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public  void excluir(@PathVariable long id ){
+        repository.deleteById(id);
+    }
+
 
 
 
