@@ -3,7 +3,9 @@ package com.remedios.joao.curso.Curso.controllers;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.InDadosCadastroRemedio;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.Remedio;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.Repository.RemedioRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +28,7 @@ public class RemedioControler {
     //Onde vou informar os atributos que eu vou pedir.
 
 
-    public void cadastrar(@RequestBody InDadosCadastroRemedio dados){
+    public void cadastrar(@RequestBody @Valid InDadosCadastroRemedio dados){
         repository.save(new Remedio(dados));
     }
 

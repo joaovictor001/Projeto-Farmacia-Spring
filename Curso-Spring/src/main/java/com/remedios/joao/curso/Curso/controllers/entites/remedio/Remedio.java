@@ -4,6 +4,8 @@ import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.InDadosCad
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Table(name = "Remedio")
 @Entity(name = "remedios")
 @Getter
@@ -22,7 +24,7 @@ public class Remedio {
     private Via via;
     private String lote;
     private int quantidade;
-    private String validade;
+    private LocalDate validade;
     @Enumerated(EnumType.STRING)
     private Laboratorio laboratorio;
 
