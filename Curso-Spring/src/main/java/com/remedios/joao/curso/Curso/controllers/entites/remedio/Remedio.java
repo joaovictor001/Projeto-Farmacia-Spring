@@ -1,5 +1,6 @@
 package com.remedios.joao.curso.Curso.controllers.entites.remedio;
 
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.DadosAtualizarRemedio;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.InDadosCadastroRemedio;
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 //@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
 
 
 public class Remedio {
@@ -41,4 +42,15 @@ public class Remedio {
     }
 
 
+    public void atualizarInformacoes(DadosAtualizarRemedio dados) {
+        if(dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if (dados.via() != null){
+            this.via = dados.via();
+        }
+        if (dados.laboratorio() != null){
+            this.laboratorio = dados.laboratorio();
+        }
+    }
 }

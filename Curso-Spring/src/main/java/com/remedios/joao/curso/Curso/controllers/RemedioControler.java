@@ -1,6 +1,7 @@
 package com.remedios.joao.curso.Curso.controllers;
 
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.DadosListagemRemedios;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.DadosAtualizarRemedio;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.OutDadosCadastroRemedio;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.InDadosCadastroRemedio;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.Remedio;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.Repository.RemedioRepository;
@@ -24,18 +25,24 @@ public class RemedioControler {
     //@RequestBody indica que eu vou passar um atributo durante minha requisição
     @PostMapping
 
-    //Para passar informçoes como o remedeio por meio de requisição é preciso cria um DTO(Model de dados)
+    //Para passar informçoes como o remedeio por meio de requisição é preciso cria um DTO(Model de dados).
     //Onde vou informar os atributos que eu vou pedir.
-    //casso haja algo erro no post o Trasactional da um rollback n
+    //casso haja algo erro no post o Trasactional da um rollback nao enviando imformaçoes quebradas.
     @Transactional
-    //
     public void cadastrar(@RequestBody @Valid InDadosCadastroRemedio dados){
         repository.save(new Remedio(dados));
     }
 
     @GetMapping
-    public List<DadosListagemRemedios> listar(){
-        return repository.findAll().stream().map(DadosListagemRemedios::new).toList();
+    public List<OutDadosCadastroRemedio> listar(){
+        return repository.findAll().stream().map(OutDadosCadastroRemedio::new).toList();
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizarRemedio dados){
+        var remedio = repository.getReferenceById(dados.id());
+        remedio.atualizarInformacoes(dados);
     }
 
 
