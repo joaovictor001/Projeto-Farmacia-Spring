@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.PublicKey;
 import java.util.List;
 
 //@RestController indica para o spring que essa é um aclase sping e precisa ser inicializada.
@@ -35,16 +36,10 @@ public class RemedioControler {
 
     @GetMapping
     public List<OutDadosCadastroRemedio> listar(){
-        return repository.findAll().stream().map(OutDadosCadastroRemedio::new).toList();
+        // A função findAll(boolean)(true or false) cria automatico para campos boolean so precisamos
+        return repository.findAllByAtivoTrue().stream().map(OutDadosCadastroRemedio::new).toList();
     }
 
-    @GetMapping("/{id}")
-    public List<OutDadosCadastroRemedio> pegaum(@PathVariable long id){
-        return repository.findById(id).stream().map(OutDadosCadastroRemedio::new).toList();
-
-
-
-    }
 
     @PutMapping
     @Transactional
@@ -53,11 +48,23 @@ public class RemedioControler {
         remedio.atualizarInformacoes(dados);
     }
 
+
+
     @DeleteMapping("/{id}")
     @Transactional
     public  void excluir(@PathVariable long id ){
         repository.deleteById(id);
     }
+
+    @DeleteMapping("inativar/{id}")
+    @Transactional
+    public  void  inativar(@PathVariable long id){
+        var remedio = repository.getReferenceById(id);
+        remedio.inativar();
+
+    }
+
+
 
 
 
