@@ -1,15 +1,15 @@
 package com.remedios.joao.curso.Curso.controllers;
 
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.DadosListagemRemedios;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.InDadosCadastroRemedio;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.Remedio;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.Repository.RemedioRepository;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 //@RestController indica para o spring que essa é um aclase sping e precisa ser inicializada.
 //@RequestMapping setar o meu endpoint da Api.
@@ -26,11 +26,18 @@ public class RemedioControler {
 
     //Para passar informçoes como o remedeio por meio de requisição é preciso cria um DTO(Model de dados)
     //Onde vou informar os atributos que eu vou pedir.
-
-
+    //casso haja algo erro no post o Trasactional da um rollback n
+    @Transactional
+    //
     public void cadastrar(@RequestBody @Valid InDadosCadastroRemedio dados){
         repository.save(new Remedio(dados));
     }
+
+    @GetMapping
+    public List<DadosListagemRemedios> listar(){
+        return repository.findAll().stream().map(DadosListagemRemedios::new).toList();
+    }
+
 
 
 }
