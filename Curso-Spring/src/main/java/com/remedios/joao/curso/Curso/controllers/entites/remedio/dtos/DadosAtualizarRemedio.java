@@ -11,5 +11,6 @@ public record DadosAtualizarRemedio(
         Long id,
         String nome,
         Via via,
-        Laboratorio laboratorio) {
+        Laboratorio laboratorio,
+        boolean ativo) {
 }

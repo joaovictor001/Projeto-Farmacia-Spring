@@ -5,6 +5,8 @@ import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.OutDadosCa
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.InDadosCadastroRemedio;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.Remedio;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.Repository.RemedioRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import java.util.List;
 //@RequestMapping setar o meu endpoint da Api.
 @RestController
 @RequestMapping("/remedios")
+@Tag(name = "remedios_api")
 public class RemedioControler {
     @Autowired
     private RemedioRepository repository;
@@ -30,6 +33,7 @@ public class RemedioControler {
     //Onde vou informar os atributos que eu vou pedir.
     // @Transactional: caso haja algo erro no post o Trasactional da um rollback nao enviando imformaçoes quebradas.
     @Transactional
+    @Operation(summary = "Realiza o cadastro de remedios ", method = "POST")
     public void cadastrar(@RequestBody @Valid InDadosCadastroRemedio dados){
         repository.save(new Remedio(dados));
     }
@@ -61,7 +65,14 @@ public class RemedioControler {
     public  void  inativar(@PathVariable long id){
         var remedio = repository.getReferenceById(id);
         remedio.inativar();
+    }
 
+
+    @PutMapping("ativar/{id}")
+    @Transactional
+    public void Reativar(@PathVariable long id){
+        var ativacao = repository.getReferenceById(id);
+        ativacao.ativar();
     }
 
 
