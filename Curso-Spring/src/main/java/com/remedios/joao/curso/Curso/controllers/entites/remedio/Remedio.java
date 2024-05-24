@@ -1,7 +1,9 @@
 package com.remedios.joao.curso.Curso.controllers.entites.remedio;
 
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.DadosAtualizarRemedio;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.InDadosCadastroRemedio;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Laboratorio;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Via;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.RemedioUpdateDTO;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.RemedioCreateDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,10 +31,10 @@ public class Remedio {
     private LocalDate validade;
     @Enumerated(EnumType.STRING)
     private Laboratorio laboratorio;
-    private  boolean ativo;
+    private boolean ativo;
 
 
-    public Remedio(InDadosCadastroRemedio dados) {
+    public Remedio(RemedioCreateDTO dados) {
 
         this.nome = dados.nome();
         this.via = dados.via();
@@ -44,7 +46,7 @@ public class Remedio {
     }
 
 
-    public void atualizarInformacoes(DadosAtualizarRemedio dados) {
+    public void atualizarInformacoes(RemedioUpdateDTO dados) {
         if(dados.nome() != null){
             this.nome = dados.nome();
         }
@@ -62,4 +64,6 @@ public class Remedio {
     public void ativar(){
         this.ativo = true;
     }
+
+
 }
