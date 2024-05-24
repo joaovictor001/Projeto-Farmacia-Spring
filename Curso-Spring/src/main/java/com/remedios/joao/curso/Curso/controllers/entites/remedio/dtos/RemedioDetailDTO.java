@@ -1,12 +1,12 @@
 package com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos;
 
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Laboratorio;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Laboratorio;
 import com.remedios.joao.curso.Curso.controllers.entites.remedio.Remedio;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Via;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Via;
 
 import java.time.LocalDate;
 
-public record DadosDetalhamentoRemedios(
+public record RemedioDetailDTO(
         Long id ,
         String nome,
         Via via,
@@ -16,7 +16,7 @@ public record DadosDetalhamentoRemedios(
         Laboratorio laboratorio,
 
         Boolean ativo) {
-    public DadosDetalhamentoRemedios(Remedio remedio){
+    public RemedioDetailDTO(Remedio remedio){
         this(
                 remedio.getId(),
                 remedio.getNome(),

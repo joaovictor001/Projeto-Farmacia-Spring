@@ -1,7 +1,7 @@
 package com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos;
 
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Laboratorio;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Via;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Laboratorio;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Via;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
 
-public record InDadosCadastroRemedio(
+public record RemedioCreateDTO(
 
         @NotBlank
         String nome ,

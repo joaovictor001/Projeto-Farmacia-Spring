@@ -1,12 +1,10 @@
 package com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos;
 
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Laboratorio;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Via;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Laboratorio;
+import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Via;
 import jakarta.validation.constraints.NotNull;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
-public record DadosAtualizarRemedio(
+public record RemedioUpdateDTO(
         @NotNull
         Long id,
         String nome,
