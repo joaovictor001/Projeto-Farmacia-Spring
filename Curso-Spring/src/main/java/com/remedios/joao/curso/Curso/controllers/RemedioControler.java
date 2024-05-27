@@ -13,6 +13,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -31,14 +32,16 @@ public class RemedioControler {
     //@PostMapping é o verbo que minha funcao vai usar
     //@RequestBody indica que eu vou passar um atributo durante minha requisição
     @PostMapping
-
     //Para passar informaçoes como o remedeio por meio de requisição é preciso cria um DTO(Model de dados).
     //Onde vou informar os atributos que eu vou pedir.
-    // @Transactional: caso haja algo erro no post o Trasactional da um rollback nao enviando imformaçoes quebradas.
     @Transactional
+    //@Transactional: caso haja algo erro no post o Trasactional da um rollback nao enviando imformaçoes quebradas.
     @Operation(summary = "Realiza o cadastro de remedios ", method = "POST")
-    public void cadastrar(@RequestBody @Valid RemedioCreateDTO dados){
-        repository.save(new Remedio(dados));
+    public ResponseEntity<RemedioDetailDTO> cadastrar(@RequestBody @Valid RemedioCreateDTO dados, UriComponentsBuilder uriBilder){
+        var remedio  = new Remedio((dados));
+        repository.save(remedio);
+        var uri  = uriBilder.path("/remedios/{id}").buildAndExpand(remedio.getId()).toUri();
+        return ResponseEntity.created(uri).body(new RemedioDetailDTO(remedio));
     }
 
     @GetMapping
