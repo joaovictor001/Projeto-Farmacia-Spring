@@ -39,10 +39,11 @@ public class MedicoController {
         return repository.findAllByAtivoTrue().stream().map(MedicoListDTO::new).toList();
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<MedicoDetailDTO> atualizando(@PathVariable Long id, MedicoUpdateDTO dados){
-        var medico  = repository.getReferenceById(id);
+    @PutMapping
+    public ResponseEntity<MedicoDetailDTO> atualizar(@RequestBody @Valid MedicoUpdateDTO dados){
+        var medico  = repository.getReferenceById(dados.id());
         medico.atualizar(dados);
+
         return ResponseEntity.ok(new MedicoDetailDTO(medico));
 
 
