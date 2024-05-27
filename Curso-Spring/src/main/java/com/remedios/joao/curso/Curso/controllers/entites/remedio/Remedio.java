@@ -65,5 +65,9 @@ public class Remedio {
         this.ativo = true;
     }
 
+    public boolean vereicar_status(){
+        return this.ativo;
+    }
+
 
 }

@@ -23,7 +23,7 @@ import java.util.List;
 //Link Swagger => http://localhost:8081/swagger-ui/index.html#/
 @RestController
 @RequestMapping("/remedios")
-@Tag(name = "remedios_api")
+@Tag(name = "Remedios")
 public class RemedioControler {
     @Autowired
     private RemedioRepository repository;
@@ -92,8 +92,13 @@ public class RemedioControler {
     }
 
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> get_remedios(@PathVariable long id ){
 
-
-
-
+        var remedio = repository.getReferenceById(id);
+        if (remedio.vereicar_status()){
+            return  ResponseEntity.ok(new RemedioDetailDTO(remedio));
+        }
+        return  ResponseEntity.notFound().build();
+    }
 }

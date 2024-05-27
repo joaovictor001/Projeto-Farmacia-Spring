@@ -6,6 +6,7 @@ import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoCreate
 import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoDetailDTO;
 import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoListDTO;
 import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoUpdateDTO;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.GeneratedValue;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/medico")
+@Tag(name = "Médicos")
 
 public class MedicoController {
     @Autowired
@@ -35,12 +37,12 @@ public class MedicoController {
     }
 
     @GetMapping
-    public List<MedicoListDTO> Get_medicos(){
+    public List<MedicoListDTO> Get_medico(){
         return repository.findAllByAtivoTrue().stream().map(MedicoListDTO::new).toList();
     }
 
     @PutMapping
-    public ResponseEntity<MedicoDetailDTO> atualizar(@RequestBody @Valid MedicoUpdateDTO dados){
+    public ResponseEntity<MedicoDetailDTO> atualizar_medico(@RequestBody @Valid MedicoUpdateDTO dados){
         var medico  = repository.getReferenceById(dados.id());
         medico.atualizar(dados);
 

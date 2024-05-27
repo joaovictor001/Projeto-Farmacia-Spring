@@ -1,5 +1,6 @@
 package com.remedios.joao.curso.Curso.controllers.entites.medico;
 
+import com.remedios.joao.curso.Curso.controllers.RemedioControler;
 import com.remedios.joao.curso.Curso.controllers.entites.medico.Enums.Especialidade;
 import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoCreateDTO;
 import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoUpdateDTO;
@@ -66,5 +67,7 @@ public class Medico {
     public  void desativar(){
         this.ativo = false;
     }
+
+
 
 }
