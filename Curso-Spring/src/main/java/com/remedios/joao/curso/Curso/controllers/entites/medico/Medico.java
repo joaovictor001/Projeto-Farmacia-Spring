@@ -2,6 +2,7 @@ package com.remedios.joao.curso.Curso.controllers.entites.medico;
 
 import com.remedios.joao.curso.Curso.controllers.entites.medico.Enums.Especialidade;
 import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoCreateDTO;
+import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoUpdateDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -45,6 +46,25 @@ public class Medico {
         this.email = dados.email();
         this.ativo = true;
 
+    }
+
+    public void atualizar(MedicoUpdateDTO dados){
+        if(dados.especialidade() != null){
+            this.especialidade = dados.especialidade();
+        }
+        if(dados.email() != null){
+            this.email = dados.email();
+        }
+        if(dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
+    }
+
+    public void ativar(){
+        this.ativo = true;
+    }
+    public  void desativar(){
+        this.ativo = false;
     }
 
 }
