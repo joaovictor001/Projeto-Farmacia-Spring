@@ -1,6 +1,6 @@
-package com.remedios.joao.curso.Curso.controllers.entites.medico.Repository;
+package com.remedios.joao.curso.Curso.entites.medico.Repository;
 
-import com.remedios.joao.curso.Curso.controllers.entites.medico.Medico;
+import com.remedios.joao.curso.Curso.entites.medico.Medico;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

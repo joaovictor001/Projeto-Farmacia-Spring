@@ -1,9 +1,8 @@
-package com.remedios.joao.curso.Curso.controllers.entites.medico;
+package com.remedios.joao.curso.Curso.entites.medico;
 
-import com.remedios.joao.curso.Curso.controllers.RemedioControler;
-import com.remedios.joao.curso.Curso.controllers.entites.medico.Enums.Especialidade;
-import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoCreateDTO;
-import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoUpdateDTO;
+import com.remedios.joao.curso.Curso.entites.medico.Enums.Especialidade;
+import com.remedios.joao.curso.Curso.entites.medico.dto.MedicoCreateDTO;
+import com.remedios.joao.curso.Curso.entites.medico.dto.MedicoUpdateDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;

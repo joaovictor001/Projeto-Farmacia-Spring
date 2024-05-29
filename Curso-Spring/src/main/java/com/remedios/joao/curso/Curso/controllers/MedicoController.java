@@ -1,13 +1,12 @@
 package com.remedios.joao.curso.Curso.controllers;
 
-import com.remedios.joao.curso.Curso.controllers.entites.medico.Medico;
-import com.remedios.joao.curso.Curso.controllers.entites.medico.Repository.MedicoRepository;
-import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoCreateDTO;
-import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoDetailDTO;
-import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoListDTO;
-import com.remedios.joao.curso.Curso.controllers.entites.medico.dto.MedicoUpdateDTO;
+import com.remedios.joao.curso.Curso.entites.medico.Medico;
+import com.remedios.joao.curso.Curso.entites.medico.Repository.MedicoRepository;
+import com.remedios.joao.curso.Curso.entites.medico.dto.MedicoCreateDTO;
+import com.remedios.joao.curso.Curso.entites.medico.dto.MedicoDetailDTO;
+import com.remedios.joao.curso.Curso.entites.medico.dto.MedicoListDTO;
+import com.remedios.joao.curso.Curso.entites.medico.dto.MedicoUpdateDTO;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.persistence.GeneratedValue;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

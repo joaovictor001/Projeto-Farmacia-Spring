@@ -1,4 +1,4 @@
-package com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum;
+package com.remedios.joao.curso.Curso.entites.remedio.Enum;
 
 public enum Via {
     ORAL,

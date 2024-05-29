@@ -1,7 +1,7 @@
-package com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos;
+package com.remedios.joao.curso.Curso.entites.remedio.dtos;
 
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Laboratorio;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Via;
+import com.remedios.joao.curso.Curso.entites.remedio.Enum.Laboratorio;
+import com.remedios.joao.curso.Curso.entites.remedio.Enum.Via;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;

@@ -1,11 +1,11 @@
 package com.remedios.joao.curso.Curso.controllers;
 
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.RemedioUpdateDTO;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.RemedioDetailDTO;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.RemedioListDTO;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.RemedioCreateDTO;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Remedio;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Repository.RemedioRepository;
+import com.remedios.joao.curso.Curso.entites.remedio.dtos.RemedioUpdateDTO;
+import com.remedios.joao.curso.Curso.entites.remedio.dtos.RemedioDetailDTO;
+import com.remedios.joao.curso.Curso.entites.remedio.dtos.RemedioListDTO;
+import com.remedios.joao.curso.Curso.entites.remedio.dtos.RemedioCreateDTO;
+import com.remedios.joao.curso.Curso.entites.remedio.Remedio;
+import com.remedios.joao.curso.Curso.entites.remedio.Repository.RemedioRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
@@ -20,7 +20,7 @@ import java.util.List;
 //@RestController indica para o spring que essa é um aclase sping e precisa ser inicializada.
 //@RequestMapping setar o meu endpoint da Api.
 
-//Link Swagger => http://localhost:8081/swagger-ui/index.html#/
+
 @RestController
 @RequestMapping("/remedios")
 @Tag(name = "Remedios")

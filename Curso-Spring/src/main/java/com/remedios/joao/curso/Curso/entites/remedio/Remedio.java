@@ -1,9 +1,9 @@
-package com.remedios.joao.curso.Curso.controllers.entites.remedio;
+package com.remedios.joao.curso.Curso.entites.remedio;
 
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Laboratorio;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Via;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.RemedioUpdateDTO;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos.RemedioCreateDTO;
+import com.remedios.joao.curso.Curso.entites.remedio.Enum.Laboratorio;
+import com.remedios.joao.curso.Curso.entites.remedio.Enum.Via;
+import com.remedios.joao.curso.Curso.entites.remedio.dtos.RemedioUpdateDTO;
+import com.remedios.joao.curso.Curso.entites.remedio.dtos.RemedioCreateDTO;
 import jakarta.persistence.*;
 import lombok.*;
 

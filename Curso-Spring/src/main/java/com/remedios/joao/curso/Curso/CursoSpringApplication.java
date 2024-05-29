@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(title = "swagger OpenApi ", version= "1", description = "Api de remedios"))
+//Link Swagger => http://localhost:8081/swagger-ui/index.html#/
 @EnableScheduling
 public class CursoSpringApplication {
 

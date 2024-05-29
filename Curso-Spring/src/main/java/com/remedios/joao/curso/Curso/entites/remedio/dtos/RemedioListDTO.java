@@ -1,8 +1,8 @@
-package com.remedios.joao.curso.Curso.controllers.entites.remedio.dtos;
+package com.remedios.joao.curso.Curso.entites.remedio.dtos;
 
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Laboratorio;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Remedio;
-import com.remedios.joao.curso.Curso.controllers.entites.remedio.Enum.Via;
+import com.remedios.joao.curso.Curso.entites.remedio.Enum.Laboratorio;
+import com.remedios.joao.curso.Curso.entites.remedio.Remedio;
+import com.remedios.joao.curso.Curso.entites.remedio.Enum.Via;
 
 import java.time.LocalDate;
 
