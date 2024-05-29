@@ -1,2 +1,9 @@
-package com.remedios.joao.curso.Curso.Secutiry;public class SecurityConfig {
+package com.remedios.joao.curso.Curso.Secutiry;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
 }

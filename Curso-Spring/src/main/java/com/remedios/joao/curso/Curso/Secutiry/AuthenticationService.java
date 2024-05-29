@@ -1,4 +1,4 @@
-package com.remedios.joao.curso.Curso.entites.usuario;
+package com.remedios.joao.curso.Curso.Secutiry;
 
 import com.remedios.joao.curso.Curso.entites.usuario.Repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
