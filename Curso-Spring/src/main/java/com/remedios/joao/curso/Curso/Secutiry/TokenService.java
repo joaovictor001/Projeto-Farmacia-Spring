@@ -6,16 +6,19 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.remedios.joao.curso.Curso.entites.usuario.Usuario;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+@Service
 
 public class TokenService {
 
-
-    @Value("$api.security.token.secret")
+    //Essa é a chave que informa que o token esta sendo sgerado por essa aplicação.
+    @Value("${api.security.token.secret}")
     private String secret;
+
     public  String generateToken(Usuario user){
         try{
             Algorithm algorithm = Algorithm.HMAC256(secret);
@@ -37,10 +40,12 @@ public class TokenService {
     public String validateToken(String token){
         try{
             Algorithm algorithm = Algorithm.HMAC256(secret);
+            //criar o corpo de resposta da vilidação
             return JWT.require(algorithm)
                     .withIssuer("login-ath-api")
                     .build()
                     .verify(token)
+                    //Vai pegar  o Subject que passamos la em cima
                     .getSignature();
 
         }catch (JWTVerificationException exception){
