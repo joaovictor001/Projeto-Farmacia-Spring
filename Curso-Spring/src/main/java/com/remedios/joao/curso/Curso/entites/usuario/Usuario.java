@@ -13,10 +13,12 @@ import lombok.*;
 
 
 public class Usuario {
+    // A anotação id so indica para o banco quem é a chave primaria
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
-    private String login;
-    private  String senha;
+    private String name;
+    private  String email;
+    private  String pssword;
 
 }
