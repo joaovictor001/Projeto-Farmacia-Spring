@@ -1,7 +1,8 @@
 CREATE TABLE usuario(
 id bigint not null auto_increment,
-login VARCHAR(100) NOT NULL,
-senha VARCHAR(100) NOT NULL,
+name VARCHAR(100)UNIQUE NOT NULL,
+email VARCHAR(100) NOT NULL,
+password VARCHAR(100) NOT NULL,
 
 primary key(id)
 );
