@@ -3,6 +3,7 @@ package com.remedios.joao.curso.Curso.Secutiry;
 import com.remedios.joao.curso.Curso.Secutiry.TokenService;
 import com.remedios.joao.curso.Curso.entites.usuario.Repository.UsuarioRepository;
 import com.remedios.joao.curso.Curso.entites.usuario.Usuario;
+import com.remedios.joao.curso.Curso.entites.usuario.services.UsuarioService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,20 +21,21 @@ import java.util.Collections;
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
     @Autowired
-    TokenService tokenService;
+    private TokenService tokenService;
     @Autowired
-    UsuarioRepository userRepository;
+    private UsuarioService usuarioService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        var token = this.recoverToken(request);
-        var login = tokenService.validateToken(token);
 
-        if(login != null){
-            Usuario user = userRepository.findByEmail(login);
-            var authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
-            var authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        if(recoverToken(request) != null){
+
+            var usuario = usuarioService.getByEmail(tokenService.validateToken(recoverToken(request)));
+
+            SecurityContextHolder
+                    .getContext()
+                    .setAuthentication(new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities()));
         }
         filterChain.doFilter(request, response);
     }
