@@ -1,4 +1,15 @@
 package com.remedios.joao.curso.Curso.Secutiry.dtos;
 
-public record AutheticationRegisterDTO(String nome, String email, String password) {
+import jakarta.validation.constraints.NotBlank;
+
+public record AutheticationRegisterDTO(
+        @NotBlank
+        String name,
+        String email,
+        @NotBlank
+        String password
+) {
+
+
+
 }
