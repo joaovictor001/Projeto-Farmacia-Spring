@@ -31,7 +31,7 @@ public class UsuarioService {
     }
 
 
-    public List<UsuarioDetailsDTO> getAll() {
+    public List<UsuarioDetailsDTO> getAll() {                     //Mudar DTO
         return this.repository.findAllByAtivoTrue().stream().map(UsuarioDetailsDTO::new).toList();
     }
 

@@ -33,9 +33,6 @@ public class AuthenticationController {
     private AuthorizaionService authorizaionService;
 
 
-
-
-
     @PostMapping("/login")
     @Transactional
     public ResponseEntity<TokenJwtDTO> login(@RequestBody @Valid AuthenticationDTO dados){

@@ -17,12 +17,14 @@ public class AuthorizaionService {
     private UsuarioService usuarioService;
 
     @Autowired
-    private AuthorizaionService authorizaionService;
+    private AuthenticationService authenticationService;
+
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder passwordEncoder;
 
     public UsuarioDetailsDTO register(UsuarioCreateDTO dados){
         Usuario usuario  = new Usuario(dados,passwordEncoder.encode(dados.password()));
+        System.out.println("ROLES - " + usuario.getAuthorities());
 
         usuarioService.save(usuario);
 

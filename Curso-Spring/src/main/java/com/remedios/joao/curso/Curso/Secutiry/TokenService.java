@@ -29,7 +29,7 @@ public class TokenService {
                     .withSubject(user.getEmail())
                     //Tempo para expirar o token
                     .withExpiresAt(this.generatedExpiratioDate())
-                    .sign(algorithm);
+                    .sign(Algorithm.HMAC256(secret));
             return  token;
 
 

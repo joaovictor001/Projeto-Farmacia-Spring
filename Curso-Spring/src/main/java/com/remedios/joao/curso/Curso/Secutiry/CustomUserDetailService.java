@@ -2,6 +2,7 @@ package com.remedios.joao.curso.Curso.Secutiry;
 
 import com.remedios.joao.curso.Curso.entites.usuario.Repository.UsuarioRepository;
 import com.remedios.joao.curso.Curso.entites.usuario.Usuario;
+import com.remedios.joao.curso.Curso.entites.usuario.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,12 +16,10 @@ import java.util.ArrayList;
 
 public class CustomUserDetailService implements UserDetailsService {
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioService service;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario user = (Usuario) this.usuarioRepository.findByEmail(username);
-
-        return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),new ArrayList<>());
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return  service.getByEmail(email);
     }
 }
