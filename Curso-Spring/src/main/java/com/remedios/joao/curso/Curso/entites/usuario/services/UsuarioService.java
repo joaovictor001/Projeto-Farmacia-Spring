@@ -8,10 +8,11 @@ import com.remedios.joao.curso.Curso.infra.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-
+@Service
 public class UsuarioService {
 
     @Autowired

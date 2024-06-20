@@ -7,7 +7,9 @@ import com.remedios.joao.curso.Curso.entites.usuario.services.UsusarioServiseImp
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthenticationService {
     @Autowired
     private TokenService tokenService;

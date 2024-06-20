@@ -15,6 +15,7 @@ import java.util.List;
 @Entity(name = "usuarios")
 @Getter
 @Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of  = "id")
@@ -22,8 +23,8 @@ import java.util.List;
 
 public class Usuario implements UserDetails {
     // A anotação id so indica para o banco quem é a chave primaria
-    @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+
+    @Id @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
     private String name;
     private  String email;
