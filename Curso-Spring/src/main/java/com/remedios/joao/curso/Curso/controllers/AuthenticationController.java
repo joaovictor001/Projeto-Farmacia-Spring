@@ -1,13 +1,14 @@
 package com.remedios.joao.curso.Curso.controllers;
 
-import com.remedios.joao.curso.Curso.Secutiry.AuthenticationService;
-import com.remedios.joao.curso.Curso.Secutiry.AuthorizaionService;
-import com.remedios.joao.curso.Curso.Secutiry.TokenService;
-import com.remedios.joao.curso.Curso.Secutiry.dtos.*;
-import com.remedios.joao.curso.Curso.entites.usuario.Repository.UsuarioRepository;
-import com.remedios.joao.curso.Curso.entites.usuario.Usuario;
+
+import com.remedios.joao.curso.Curso.entites.usuario.dtos.InUsuarioDTO;
+import com.remedios.joao.curso.Curso.entites.usuario.dtos.OutUsuarioDTO;
 import com.remedios.joao.curso.Curso.entites.usuario.dtos.UsuarioCreateDTO;
 import com.remedios.joao.curso.Curso.entites.usuario.dtos.UsuarioDetailsDTO;
+import com.remedios.joao.curso.Curso.security.dtos.AuthenticationDTO;
+import com.remedios.joao.curso.Curso.security.dtos.TokenJwtDTO;
+import com.remedios.joao.curso.Curso.security.services.AuthenticationService;
+import com.remedios.joao.curso.Curso.security.services.AuthorizationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
     @Autowired
-    private AuthorizaionService authorizaionService;
+    private AuthorizationService authorizaionService;
 
 
     @PostMapping("/login")
@@ -43,7 +44,7 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     @Transactional
-    public ResponseEntity<UsuarioDetailsDTO> register(@RequestBody @Valid UsuarioCreateDTO dados){
+    public ResponseEntity<OutUsuarioDTO> register(@RequestBody @Valid InUsuarioDTO dados){
         return new ResponseEntity<>(authorizaionService.register(dados), HttpStatus.OK);
     }
 }

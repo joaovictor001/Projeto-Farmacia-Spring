@@ -1,5 +1,6 @@
 package com.remedios.joao.curso.Curso.entites.usuario;
 
+import com.remedios.joao.curso.Curso.entites.usuario.dtos.InUsuarioDTO;
 import com.remedios.joao.curso.Curso.entites.usuario.dtos.UsuarioCreateDTO;
 import com.remedios.joao.curso.Curso.entites.usuario.enums.Role;
 import jakarta.persistence.*;
@@ -34,7 +35,7 @@ public class Usuario implements UserDetails {
     private Role role;
 
 
-    public Usuario(UsuarioCreateDTO dados, String encrypPassword){
+    public Usuario(InUsuarioDTO dados, String encrypPassword){
         this.name = dados.name();
         this.email = dados.email();
         this.password = encrypPassword;

@@ -1,6 +1,6 @@
 package com.remedios.joao.curso.Curso.entites.usuario.services;
 
-import com.remedios.joao.curso.Curso.Secutiry.dtos.AutheticationRegisterDTO;
+import com.remedios.joao.curso.Curso.security.dtos.AuthenticationDTO;
 import com.remedios.joao.curso.Curso.entites.usuario.Repository.UsuarioRepository;
 import com.remedios.joao.curso.Curso.entites.usuario.Usuario;
 import com.remedios.joao.curso.Curso.entites.usuario.dtos.UsuarioDetailsDTO;
@@ -26,7 +26,7 @@ public class UsuarioService {
             throw new BadCredentialsException("Usuario na existe");
         }
 
-        System.out.println("Usuario Service" + user.getUsername());
+
         return user;
     }
 

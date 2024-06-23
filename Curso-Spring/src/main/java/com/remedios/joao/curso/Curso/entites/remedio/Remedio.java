@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Table(name = "Remedio")
 @Entity(name = "remedios")
 @Getter
-//@Setter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -63,6 +63,7 @@ public class Remedio {
     }
     public void ativar(){
         this.ativo = true;
+
     }
 
     public boolean vereicar_status(){
