@@ -1,5 +1,6 @@
 package com.remedios.joao.curso.Curso.controllers;
 
+import com.remedios.joao.curso.Curso.entites.remedio.Services.RemedioService;
 import com.remedios.joao.curso.Curso.entites.remedio.dtos.RemedioUpdateDTO;
 import com.remedios.joao.curso.Curso.entites.remedio.dtos.RemedioDetailDTO;
 import com.remedios.joao.curso.Curso.entites.remedio.dtos.RemedioListDTO;
@@ -26,7 +27,7 @@ import java.util.List;
 @Tag(name = "Remedios")
 public class RemedioControler {
     @Autowired
-    private RemedioRepository repository;
+    private RemedioService service
 
 
     //@PostMapping é o verbo que minha funcao vai usar
@@ -38,9 +39,8 @@ public class RemedioControler {
     //@Transactional: caso haja algo erro no post o Trasactional da um rollback nao enviando imformaçoes quebradas.
     @Operation(summary = "Realiza o cadastro de remedios ", method = "POST")
     public ResponseEntity<RemedioDetailDTO> cadastrar(@RequestBody @Valid RemedioCreateDTO dados, UriComponentsBuilder uriBilder){
-        var remedio  = new Remedio((dados));
-        repository.save(remedio);
-        var uri  = uriBilder.path("/remedios/{id}").buildAndExpand(remedio.getId()).toUri();
+        RemedioDetailDTO remedio  = service.create(dados);
+        var uri  = uriBilder.path("/remedios/{id}").buildAndExpand(remedio.id()).toUri();
         return ResponseEntity.created(uri).body(new RemedioDetailDTO(remedio));
     }
 

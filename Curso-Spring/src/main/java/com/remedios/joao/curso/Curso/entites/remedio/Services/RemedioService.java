@@ -38,15 +38,8 @@ public class RemedioService {
     public RemedioDetailDTO update(long id, RemedioUpdateDTO dados){
         Remedio remedio = this.repository.findById(id).orElseThrow(() -> new NotFoundException("Id Not Fund"));
         remedio.atualizarInformacoes(dados);
-
         return new RemedioDetailDTO(remedio);
-
-
-
     }
-
-
-
 
     public RemedioDetailDTO Inativar(Long id){
         Remedio remedio = this.repository.findById(id).orElseThrow(()-> new NotFoundException("id not found!"));
