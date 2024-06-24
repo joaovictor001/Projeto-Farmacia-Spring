@@ -31,14 +31,22 @@ public class RemedioService {
     }
 
     public RemedioDetailDTO getPorId(Long id){
+
         Remedio remedio  = this.repository.findById(id).orElseThrow(() -> new NotFoundException("Remedio não encontrado.!"));
+        if(!remedio.vereicar_status()){
+            return null;
+        }
         return new RemedioDetailDTO(remedio);
     }
 
     public RemedioDetailDTO update(long id, RemedioUpdateDTO dados){
         Remedio remedio = this.repository.findById(id).orElseThrow(() -> new NotFoundException("Id Not Fund"));
         remedio.atualizarInformacoes(dados);
+
         return new RemedioDetailDTO(remedio);
+
+
+
     }
 
     public RemedioDetailDTO Inativar(Long id){
