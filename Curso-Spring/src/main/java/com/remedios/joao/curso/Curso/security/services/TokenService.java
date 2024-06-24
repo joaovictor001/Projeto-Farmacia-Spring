@@ -63,8 +63,6 @@ public class TokenService {
         }
     }
 
-    // Função que retorna a hora atual mais 2 horas
-    // usada para determinar ciclo de vida do Token
 
     private Instant Expirar() {
         return LocalDateTime.now()
